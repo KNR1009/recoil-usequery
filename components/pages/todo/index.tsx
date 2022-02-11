@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // hooks
 import { useTodoLists } from "../../../hooks/useTodoLists";
 import { Sample1Memo } from "../../sample/sample1";
-import { Sample2 } from "../../sample/sample2";
+import { Sample2Memo } from "../../sample/sample2";
 
 export const Todo: React.VFC = () => {
   // stateのみを取り出したい場合
@@ -20,7 +20,7 @@ export const Todo: React.VFC = () => {
     <div>
       <div>Recoilのstateを更新</div>
       <Sample1Memo />
-      <Sample2 />
+      <Sample2Memo />
     </div>
   );
 };
