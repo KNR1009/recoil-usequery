@@ -2,7 +2,7 @@
   "name": "recoil-usequery",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
