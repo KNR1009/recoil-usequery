@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 // hooks
 import { useTodoLists } from "../../../hooks/useTodoLists";
+import { Sample1 } from "../../sample/sample1";
+import { Sample2 } from "../../sample/sample2";
 
 export const Todo: React.VFC = () => {
   // stateのみを取り出したい場合
@@ -10,5 +12,15 @@ export const Todo: React.VFC = () => {
     setTodoLists(["a", "b", "c"]);
   }, []);
 
-  return <div>{todoLists}</div>;
+  console.log("todoListコンポーネントのレンダリング");
+
+  // recoilのstateを変更
+
+  return (
+    <div>
+      <div>Recoilのstateを更新</div>
+      <Sample1 />
+      <Sample2 />
+    </div>
+  );
 };
