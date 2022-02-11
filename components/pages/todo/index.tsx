@@ -19,8 +19,8 @@ export const Todo: React.VFC = () => {
   return (
     <div>
       <div>Recoilのstateを更新</div>
-      <Sample1Memo />
-      <Sample2Memo />
+      {/* <Sample1Memo />
+      <Sample2Memo /> */}
     </div>
   );
 };

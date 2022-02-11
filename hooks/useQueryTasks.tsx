@@ -8,13 +8,15 @@ import { Task } from "../interfaces/Task";
 export const useQueryTasks = () => {
   const getTasks = async () => {
     const { data } = await axios.get("http://127.0.0.1:3000/tasks");
+    console.log("APIコール中");
     return data;
   };
 
   return useQuery<Task[] | Error>({
     queryKey: "tasks",
     queryFn: getTasks,
-    staleTime: 0,
+    // 15秒間はAPIコールをしない
+    staleTime: 15000,
     refetchOnWindowFocus: true,
   });
 };
