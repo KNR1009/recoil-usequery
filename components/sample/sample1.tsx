@@ -1,6 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const Sample1 = () => {
+const Sample1 = () => {
   console.log("サンプルコンポーネント1");
   return <div>サンプルコンポーネント1</div>;
 };
+
+export const Sample1Memo = memo(Sample1);
