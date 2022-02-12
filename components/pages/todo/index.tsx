@@ -32,7 +32,7 @@ export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
     <div>
       <div>Recoilのstateを更新</div>
       {TasksLists.map((task, index) => (
-        <Task key={index}>
+        <TaskContainer key={index}>
           <p>タスク名: {task.title} </p>
           <p
             className="task-delete"
@@ -42,7 +42,7 @@ export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
           >
             削除
           </p>
-        </Task>
+        </TaskContainer>
       ))}
       {/* <Sample1Memo />
       <Sample2Memo /> */}
@@ -50,7 +50,7 @@ export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
   );
 };
 
-const Task = styled.div`
+const TaskContainer = styled.div`
   display: flex;
   align-items: center;
 

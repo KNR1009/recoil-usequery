@@ -6,3 +6,5 @@ export type Task = {
   created_at: string;
   updated_at: string;
 };
+
+export type postTask = Omit<Task, "id" | "created_at" | "updated_at">;
