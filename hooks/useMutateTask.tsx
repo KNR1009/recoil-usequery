@@ -14,8 +14,6 @@ export const useMutateTask = () => {
         // キャッシュを更新する処理
         // 既存のデータをキャッシュから取得する
         const previousTasks = queryClient.getQueryData<Task[]>("tasks");
-        console.log(`削除前のデータ${previousTasks}`);
-        console.log(variables);
         if (previousTasks) {
           queryClient.setQueryData<Task[]>(
             "tasks",
