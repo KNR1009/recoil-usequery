@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { todoListsState } from "../lib/store";
+import { tasksListsState } from "../lib/store";
 
-export const useTodoLists = () => {
-  const [todoLists, setTodoLists] = useRecoilState(todoListsState);
+export const useTaskLists = () => {
+  const [TasksLists, setTasksLists] = useRecoilState(tasksListsState);
 
-  return { todoLists, setTodoLists };
+  return { TasksLists, setTasksLists };
 };

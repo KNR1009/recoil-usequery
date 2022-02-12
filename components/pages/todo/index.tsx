@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // hooks
-import { useTodoLists } from "../../../hooks/useTodoLists";
+import { useTaskLists } from "../../../hooks/useTodoLists";
 // types
 import { Task } from "../../../interfaces/Task";
 // import { Sample1Memo } from "../../sample/sample1";
@@ -12,11 +12,12 @@ type TodoProps = {
 
 export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
   console.log(tasks);
-  // stateのみを取り出したい場合
-  const { todoLists, setTodoLists } = useTodoLists();
+  // recoilからのデータ取得
+  const { TasksLists, setTasksLists } = useTaskLists();
 
   useEffect(() => {
-    setTodoLists(["a", "b", "c"]);
+    console.log("recoilデータを更新");
+    setTasksLists(tasks);
   }, []);
 
   console.log("todoListコンポーネントのレンダリング");

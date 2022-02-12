@@ -1,5 +1,7 @@
 import { atom } from "recoil";
-export const todoListsState = atom<string[]>({
-  key: "todoLists",
+// types
+import { Task } from "../interfaces/Task";
+export const tasksListsState = atom<Task[]>({
+  key: "tasksLists",
   default: [],
 });
