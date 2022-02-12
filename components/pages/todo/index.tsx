@@ -8,29 +8,24 @@ import { Task } from "../../../interfaces/Task";
 
 // styled
 import styled from "styled-components";
+import { useMutateTask } from "../../../hooks/useMutateTask";
 
 type TodoProps = {
   tasks: Task[];
 };
 
 export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
-  console.log(tasks);
   // recoilからのデータ取得
   const { TasksLists, setTasksLists } = useTaskLists();
+  const { deleteTaskMutation } = useMutateTask();
 
   useEffect(() => {
     console.log("recoilデータを更新");
     setTasksLists(tasks);
-    // TasksListsが変わった場合のみ更新 => データが変更しない限りレンダリングは発生しない
-  }, []);
+    // キャッシュデータ(tasks)によってレンダリング
+  }, [tasks]);
 
   console.log("todoListコンポーネントのレンダリング");
-
-  // 削除コール
-  const onDelete = (id: number) => {
-    // 削除用のapiコールをしてデータを更新
-    console.log(id);
-  };
 
   // 今現在はuseQueryの値を直接代入している
   return (
@@ -42,7 +37,7 @@ export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
           <p
             className="task-delete"
             onClick={() => {
-              onDelete(task.id);
+              deleteTaskMutation.mutate(task.id);
             }}
           >
             削除
