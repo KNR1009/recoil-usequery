@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { postTask } from "../../../interfaces/Task";
 import styled from "styled-components";
+import { useRouter } from "next/router";
+import { useMutateTask } from "../../../hooks/useMutateTask";
 
 // 新規作成用のコンポーネント
 export const CreateTodo = () => {
+  const router = useRouter();
+  // 新規作成用のミューテーション
+  const { createTaskMutation } = useMutateTask();
+
   //追加用タスクの初期値
   const initialTask: postTask = {
     title: "",
-    tag: 1,
+    tag: 0,
     tag_name: "",
   };
   const [task, setTask] = useState<postTask>(initialTask);
@@ -25,7 +31,8 @@ export const CreateTodo = () => {
   };
 
   const onClick = () => {
-    console.log(task);
+    createTaskMutation.mutate(task);
+    router.push("/todo");
   };
 
   return (

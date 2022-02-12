@@ -1,10 +1,28 @@
 import axios from "axios";
 import { useQueryClient, useMutation } from "react-query";
 import { Task } from "../interfaces/Task";
+import { postTask } from "../interfaces/Task";
 
 // tasksのサーバーデータ更新用のフック
 export const useMutateTask = () => {
   const queryClient = useQueryClient();
+
+  // 新規作成
+  const createTaskMutation = useMutation(
+    (params: postTask) =>
+      axios.post<Task>("http://127.0.0.1:3000/tasks/", params),
+    {
+      onSuccess: (res) => {
+        const previousTasks = queryClient.getQueryData<Task[]>("tasks");
+        if (previousTasks) {
+          queryClient.setQueryData<Task[]>("tasks", [
+            ...previousTasks,
+            res.data,
+          ]);
+        }
+      },
+    }
+  );
 
   // 削除
   const deleteTaskMutation = useMutation(
@@ -23,5 +41,5 @@ export const useMutateTask = () => {
       },
     }
   );
-  return { deleteTaskMutation };
+  return { deleteTaskMutation, createTaskMutation };
 };

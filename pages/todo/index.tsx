@@ -27,6 +27,8 @@ const TodoPage: NextPage<Props> = () => {
     return <p>データが取得できていません</p>;
   }
 
+  console.log(data);
+
   return (
     <div>
       <Todo tasks={data}></Todo>
