@@ -14,10 +14,22 @@ const TodoPage: NextPage<Props> = () => {
 
   // APIコールを行う
   const { status, data } = useQueryTasks();
-  console.log(data);
+
+  if (status === "error") {
+    return <p>エラーです</p>;
+  }
+
+  if (status === "loading") {
+    return <p>ローディング中</p>;
+  }
+
+  if (data === undefined) {
+    return <p>データが取得できていません</p>;
+  }
+
   return (
     <div>
-      <Todo></Todo>
+      <Todo tasks={data}></Todo>
       <div onClick={() => router.push("/todo/create")}>新規作成ページへ</div>
     </div>
   );

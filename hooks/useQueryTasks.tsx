@@ -12,7 +12,7 @@ export const useQueryTasks = () => {
     return data;
   };
 
-  return useQuery<Task[] | Error>({
+  return useQuery<Task[]>({
     queryKey: "tasks",
     queryFn: getTasks,
     // 15秒間はAPIコールをしない

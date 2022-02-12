@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
 // hooks
 import { useTodoLists } from "../../../hooks/useTodoLists";
-import { Sample1Memo } from "../../sample/sample1";
-import { Sample2Memo } from "../../sample/sample2";
+// types
+import { Task } from "../../../interfaces/Task";
+// import { Sample1Memo } from "../../sample/sample1";
+// import { Sample2Memo } from "../../sample/sample2";
 
-export const Todo: React.VFC = () => {
+type TodoProps = {
+  tasks: Task[];
+};
+
+export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
+  console.log(tasks);
   // stateのみを取り出したい場合
   const { todoLists, setTodoLists } = useTodoLists();
 
