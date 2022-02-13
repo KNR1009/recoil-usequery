@@ -23,11 +23,9 @@ const TodoDetailPage: NextPage<Props> = () => {
     return <p>ローディング中</p>;
   }
 
-  console.log(task);
-
   return (
     <div>
-      <Update></Update>
+      <Update todo={task}></Update>
       <div onClick={() => router.push("/todo")}>戻る</div>{" "}
     </div>
   );
