@@ -9,6 +9,7 @@ import { Task } from "../../../interfaces/Task";
 // styled
 import styled from "styled-components";
 import { useMutateTask } from "../../../hooks/useMutateTask";
+import { useRouter } from "next/router";
 
 type TodoProps = {
   tasks: Task[];
@@ -18,9 +19,9 @@ export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
   // recoilからのデータ取得
   const { TasksLists, setTasksLists } = useTaskLists();
   const { deleteTaskMutation } = useMutateTask();
+  const router = useRouter();
 
   useEffect(() => {
-    console.log("recoilデータを更新");
     setTasksLists(tasks);
     // キャッシュデータ(tasks)によってレンダリング
   }, [tasks]);
@@ -42,6 +43,12 @@ export const Todo: React.VFC<TodoProps> = ({ tasks }) => {
           >
             削除
           </p>
+          <p
+            className="task-edit"
+            onClick={() => router.push(`todo/${task.id}`)}
+          >
+            編集
+          </p>
         </TaskContainer>
       ))}
       {/* <Sample1Memo />
@@ -56,6 +63,15 @@ const TaskContainer = styled.div`
 
   .task-delete {
     background-color: red;
+    color: #ffffff;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .task-edit {
+    background-color: #a4c6ff;
     color: #ffffff;
     padding: 5px;
     margin-left: 10px;

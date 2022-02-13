@@ -15,8 +15,8 @@ export const useQueryTasks = () => {
   return useQuery<Task[]>({
     queryKey: "tasks",
     queryFn: getTasks,
-    // 15秒間はAPIコールをしない
-    staleTime: 15000,
+    // 30秒間はAPIコールをしない
+    staleTime: 30000,
     refetchOnWindowFocus: true,
   });
 };

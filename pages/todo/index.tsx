@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 import { Todo } from "../../components/pages/todo";
+import { useQueryTask } from "../../hooks/useQueryTask";
 
 // hooks
 import { useQueryTasks } from "../../hooks/useQueryTasks";
@@ -26,8 +27,6 @@ const TodoPage: NextPage<Props> = () => {
   if (data === undefined) {
     return <p>データが取得できていません</p>;
   }
-
-  console.log(data);
 
   return (
     <div>
