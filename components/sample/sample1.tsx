@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { todoListsState } from "../../lib/store";
 
 const Sample1 = () => {
-  // const { todoLists } = useTodoLists();
+  const { todoLists } = useTodoLists();
   const todoLists = useRecoilValue(todoListsState);
 
   console.log("サンプルコンポーネント1");
